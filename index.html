@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie App Listing</title>
+    <!-- using JQUERY MOBILE library -->
+    <link
+      rel="stylesheet"
+      href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"
+    />
+    <link rel="stylesheet" href="movie.css" />
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <!-- using cordova library -->
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="Movie.js"></script>
+
+    <!-- using localforage storage library -->
+    <script src="localforage/dist/localforage.js"></script>
+    <script type="text/javascript" src="Movie_Main.js"></script>
+  </head>
+  <body>
+    <!-- Create a record using jquery-->
+    <div data-role="page" id="create">
+      <div data-role="header"><h1>Movie Log</h1></div>
+      <div data-role="content">
+        <!-- create a fieldset that contains label values for each movies database and categories -->
+        <fieldset
+          style="
+            border: 1px solid black;
+            padding: 20px;
+            border-radius: 10px;
+            color: dimgrey;
+          "
+        >
+          <legend>Movie Info</legend>
+          <form>
+            <!-- set value for different types of movies -->
+            <label for="name">Movie Name</label>
+            <input type="text" id="name" name="name" />
+            <label for="name">Year</label>
+            <input type="text" id="year" name="year" />
+
+            <!-- value selection for different categories -->
+            <label for="category">Category</label>
+            <select id="category">
+              <option value="action">Action</option>
+              <option value="animation">Animation</option>
+              <option value="comedy">Comedy</option>
+              <option value="crime">Crime</option>
+              <option value="documentary">Documentary</option>
+              <option value="drama">Drama</option>
+              <option value="family">Family</option>
+              <option value="fantasy">Fantasy</option>
+              <option value="horror">Horror</option>
+              <option value="musical">Musical</option>
+              <option value="mystery">Mystery</option>
+              <option value="thriller">Thriller</option>
+              <option value="war">War</option>
+              <option value="western">Western</option>
+            </select>
+            <label for="dateWatched">Date Watched</label>
+            <input type="date" id="dateWatched" />
+            <label for="personalRating">Personal Rating</label>
+            <input type="range" min="1" max="4" value="4" id="personalRating" />
+          </form>
+          <!-- save button -->
+          <button id="btnSave">Save to Movie Log</button>
+        </fieldset>
+
+        <!-- create  an anchor element with a button to display the movie log -->
+        <!-- the button anchor element will contain a link of the master movie log -->
+        <a href="#master"><button>Display Movie Log</button></a>
+      </div>
+      <div data-role="footer" class="footer"><h2>Framework</h2></div>
+    </div>
+
+    <!-- Another page to open: Display Master Records with the id master-->
+    <div data-role="page" id="master">
+      <div data-role="header"><h1>Movie Logged</h1></div>
+      <div data-role="content">
+        <div id="movieData"></div>
+        <div id="#btnDiv">
+          <a href="#create"><button id="btnAddMovie">Add Movie</button></a>
+        </div>
+      </div>
+
+      <!-- footer section -->
+      <div data-role="footer" class="footer"><h2>Framework</h2></div>
+    </div>
+
+    <!-- Another page to Display Record Detail- 
+      connects this to new page with id details -->
+    <div data-role="page" id="detail">
+      <div data-role="header"><h1>Movie Details</h1></div>
+      <div data-role="content">
+        <div id="detailContent"></div>
+
+        <!-- connect another page with button using anchor element -->
+        <a href="#create"><button>New Movie</button></a>
+        <button id="btnDelete">Delete Movie</button>
+
+        <!-- connect another page with button using anchor element -->
+        <a href="#master"><button>Display Movie Log</button></a>
+      </div>
+      <div data-role="footer" class="footer"><h2>Framework</h2></div>
+    </div>
+  </body>
+</html>
